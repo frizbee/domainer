@@ -1,5 +1,5 @@
 # Domainer
-## Build nginx domain config files
+## Build nginx domain config files with landing page
 
 Quick script to make bulk domains for sale landing page.
 Script really needs refactoring, but working ok.
