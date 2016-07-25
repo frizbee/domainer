@@ -17,6 +17,8 @@ Script really needs refactoring, but working ok.
 
 Upload files to your server
 
+Should be run under root privileges
+
 Run
 ```
 ./automation.rb
