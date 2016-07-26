@@ -7,7 +7,8 @@ require_relative 'domain.rb'
 domain = nil
 amount = nil
 list = nil
-prompt = ">>"
+prompt = ">"
+
 puts "Do you want to run it Automaticly (a) or Manual (m)?"
 puts "Type your answer (a|m)"
 print prompt
@@ -23,7 +24,7 @@ while type = gets.chomp.downcase
     amount = gets.chomp
     break
   when "a"
-    puts "Type full path to file with comma separeted domains names:\n"
+    puts "Type full path to file with comma separeted domain names:\n"
     print prompt
     list = gets.chomp
     break
@@ -33,7 +34,11 @@ while type = gets.chomp.downcase
   end
 end
 
-d = Domain.new(domain,amount,list)
+puts "Please add your contact email address, where you will receive offers"
+print prompt
+email = gets.chomp.downcase
+
+d = Domain.new(domain,amount,list,email)
 
 if type == "a"
  if File.file? list
@@ -46,3 +51,5 @@ end
 
 puts "Restarting server"
 %x`service nginx restart`
+
+puts "Done!"
