@@ -17,6 +17,11 @@ Script really needs refactoring, but working ok.
 
 Upload files to your server
 
+Install gem "zip"
+```
+gem install zip
+```
+
 Should be run under root privileges
 
 Run
