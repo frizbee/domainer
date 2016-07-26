@@ -4,24 +4,47 @@ require 'fileutils'
 require_relative 'libs.rb'
 require_relative 'domain.rb'
 
+prompt = ">"
 puts "Do you want to run it Automaticly (a) or Manual (m)?"
 puts "Type your answer (a|m):"
-type = gets.chomp.downcase
-if type == "m"
-  puts "Enter domain name:"
-  domain = gets.chomp.downcase
-  puts "Enter amount:"
-  amount = gets.chomp
-elsif type == "a"
-  puts "Type full path to file with comma separeted domains names:\n"
-  list = gets.chomp
-  if File.file? list
-    d = Domain.new
-    d.loop_list(list)
+print prompt
+
+while type = gets.chomp.downcase
+  case type
+  when "m"
+    puts "Please enter domain name:"
+    print prompt
+    domain = gets.chomp.downcase
+    puts "Enter amount:"
+    print prompt
+    amount = gets.chomp
+    break
+  when "a"
+    puts "Type full path to file with comma separeted domains names:\n"
+    print prompt
+    list = gets.chomp
+    break
+  else
+    puts "Plese type 'm' for manual or 'a' for automatic"
+    print prompt
   end
-else
-  puts "Enter data"
 end
 
+#if type == "m"
+#  puts "Enter domain name:"
+#  domain = gets.chomp.downcase
+#  puts "Enter amount:"
+#  amount = gets.chomp
+#elsif type == "a"
+#  puts "Type full path to file with comma separeted domains names:\n"
+#  list = gets.chomp
+#  if File.file? list
+#    d = Domain.new
+#    d.loop_list(list)
+#  end
+#else
+#  puts "Enter data"
+#end
+
 puts "Restarting server"
-%x`service nginx restart`
+#%x`service nginx restart`
