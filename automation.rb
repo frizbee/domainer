@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require 'pry'
+
 require 'fileutils'
 require_relative 'libs.rb'
 require_relative 'domain.rb'
@@ -9,7 +9,7 @@ amount = nil
 list = nil
 prompt = ">>"
 puts "Do you want to run it Automaticly (a) or Manual (m)?"
-puts "Type your answer (a|m):"
+puts "Type your answer (a|m)"
 print prompt
 
 while type = gets.chomp.downcase
@@ -37,14 +37,12 @@ d = Domain.new(domain,amount,list)
 
 if type == "a"
  if File.file? list
-   #d = Domain.new
    d.loop_list
  end
 else
-  #binding.pry
   d.manual_set
 end
 
 
 puts "Restarting server"
-#%x`service nginx restart`
+%x`service nginx restart`
