@@ -8,7 +8,7 @@ Script really needs refactoring, but working ok.
 
 * NGiNX
 * Ruby
-* PHP
+* PHP 7
 * Git
 
 

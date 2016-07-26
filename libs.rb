@@ -1,4 +1,3 @@
-
 #!/usr/bin/env ruby
 
 require 'zip'
@@ -12,4 +11,3 @@ def extract_zip(file, destination)
     end
   end
 end
-~

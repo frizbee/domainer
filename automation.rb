@@ -1,10 +1,13 @@
 #!/usr/bin/env ruby
-
+require 'pry'
 require 'fileutils'
 require_relative 'libs.rb'
 require_relative 'domain.rb'
 
-prompt = ">"
+domain = nil
+amount = nil
+list = nil
+prompt = ">>"
 puts "Do you want to run it Automaticly (a) or Manual (m)?"
 puts "Type your answer (a|m):"
 print prompt
@@ -30,21 +33,18 @@ while type = gets.chomp.downcase
   end
 end
 
-#if type == "m"
-#  puts "Enter domain name:"
-#  domain = gets.chomp.downcase
-#  puts "Enter amount:"
-#  amount = gets.chomp
-#elsif type == "a"
-#  puts "Type full path to file with comma separeted domains names:\n"
-#  list = gets.chomp
-#  if File.file? list
-#    d = Domain.new
-#    d.loop_list(list)
-#  end
-#else
-#  puts "Enter data"
-#end
+d = Domain.new(domain,amount,list)
+
+if type == "a"
+ if File.file? list
+   #d = Domain.new
+   d.loop_list
+ end
+else
+  #binding.pry
+  d.manual_set
+end
+
 
 puts "Restarting server"
 #%x`service nginx restart`
