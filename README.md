@@ -3,7 +3,7 @@
 
 Quick script to setup multiple domains for sale along with landing page.
 
-I was requested to setup landing page for over 300 domains to sale them online with web form to contact domain owner. I build that script for my own needs, feel free to use it, download and modify for your own needs in case you gonna use different http server, php version, etc.
+I was requested to setup landing page for over 300 domains to sale them online with web form to contact domain owner. I built that script for my own needs, feel free to use it, download and modify for your own needs in case you gonna use different http server, php version, etc.
 
 Script has manual domain setup (one domain per run) and automatic (multiple setup from file)
 
