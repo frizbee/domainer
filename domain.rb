@@ -37,7 +37,6 @@ def making_domain_folder
   puts "Starting create directory for domain #{@domain}"
   Dir.mkdir "/var/www/#{@domain_}" unless File.exists? "/var/www/#{@domain_}"
   file = "#{Dir.pwd}/archive.zip"
-  dest_folder = "/var/www/#{@domain_}"
   #FileUtils.cp(file, dest_folder)
   extract_zip(file, dest_folder)
   puts "directory with all files has been created successfully"
@@ -59,8 +58,6 @@ end
 
 def making_nginx_conf
   puts "Making new NGiNX config file"
-  nginx_config = "/etc/nginx/sites-available/#{@domain_}"
-  nginx_enabled = "/etc/nginx/sites-enabled/#{@domain_}"
   unless File.file? nginx_enabled
     output = File.open(nginx_config,"w")
     output << "server {\n"
@@ -85,11 +82,21 @@ end
 
   def making_nginx_symlink
     puts "Making new NGiNX symlink file"
-    nginx_config = "/etc/nginx/sites-available/#{@domain_}"
-    nginx_enabled = "/etc/nginx/sites-enabled/#{@domain_}"
     unless File.file? nginx_enabled
       FileUtils.symlink(nginx_config,nginx_enabled)
     end
+  end
+  
+  def nginx_config
+    "/etc/nginx/sites-available/#{@domain_}"
+  end
+  
+  def nginx_enabled
+    "/etc/nginx/sites-enabled/#{@domain_}"
+  end
+  
+  def dest_folder
+    "/var/www/#{@domain_}"
   end
 
 end
