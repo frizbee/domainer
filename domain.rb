@@ -7,7 +7,7 @@ class Domain
 
 def initialize(domain,amount,list,email)
   @domain = domain
-  @domain_ = domain.gsub(".","_") unless domain.nil?
+  @domain_ = domain.gsub(/[.-]/,"_") unless domain.nil?
   @amount = amount
   @list = list
   @email = email
@@ -18,7 +18,7 @@ def loop_list
     while line = file.gets
       data = line.split(",").map(&:strip)
       @domain = data[0].downcase
-      @domain_ = @domain.gsub(".","_")
+      @domain_ = @domain.gsub(/[.-]/,"_")
       @amount = data[1].downcase
       making_domain_folder
       making_nginx_conf
